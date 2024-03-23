@@ -17,8 +17,10 @@ public class Doctor {
 
     @Column(nullable = false)
     private String degree;
+
     @Column(nullable = false)
     private boolean availability;
+
     @Column(nullable = false)
     private String seniorityLevel;
 
@@ -31,5 +33,7 @@ public class Doctor {
     @Column(nullable = false)
     private BigInteger yearOfExperience;
 
-
+    @OneToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "user_id")
+    private User user;
 }
