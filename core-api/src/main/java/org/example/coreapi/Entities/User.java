@@ -40,15 +40,15 @@ public class User {
     @Column(nullable = false)
     private String city;
 
-    @Column(nullable = false)
+
     private String state;
 
-    @Column( nullable = false)
+
     private String password;
 
-    @Column( nullable = false)
+
     private String imgUrl;
 
-    @Column(nullable = false)
+
     private boolean active;
 }
