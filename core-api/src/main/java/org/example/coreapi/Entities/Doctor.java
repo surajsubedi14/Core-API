@@ -7,11 +7,10 @@ import java.math.BigInteger;
 
 @Entity
 @Data
-public class Doctor {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long doctor_id;
+@Table(name ="doctors")
+@PrimaryKeyJoinColumn(name ="user_id")
 
+public class Doctor extends User {
     @Column(unique = true, nullable = false)
     private String registrationNumber;
 
@@ -31,9 +30,6 @@ public class Doctor {
     private String specialization;
 
     @Column(nullable = false)
-    private BigInteger yearOfExperience;
+    private int yearOfExperience;
 
-    @OneToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "user_id")
-    private User user;
 }
