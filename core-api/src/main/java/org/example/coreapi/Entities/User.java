@@ -7,13 +7,17 @@ import java.math.BigInteger;
 
 @Entity
 @Data
+@Inheritance(strategy = InheritanceType.JOINED)
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long user_id;
 
-    @Column( nullable = false)
+    @Column(nullable = false)
     private String firstName;
+
+    @Column(nullable = false)
+    private String role;
 
     @Column( nullable = false)
     private String lastName;
@@ -31,10 +35,13 @@ public class User {
     private String gender;
 
     @Column(unique = true, nullable = false)
-    private BigInteger aadharNumber;
+    private BigInteger aadhar;
 
     @Column(nullable = false)
-    private String address;
+    private String city;
+
+    @Column(nullable = false)
+    private String state;
 
     @Column( nullable = false)
     private String password;

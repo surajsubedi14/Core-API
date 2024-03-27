@@ -1,6 +1,7 @@
 package org.example.coreapi.Services;
 
 import org.example.coreapi.Entities.Doctor;
+import org.example.coreapi.Entities.Hospital;
 import org.example.coreapi.Repositories.DoctorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,5 +25,9 @@ public class DoctorServices {
 
     public List<Doctor> getDoctorsBySeniority(String isSenior){ return (List<Doctor>) doctorRepository.getDoctorsBySeniority(isSenior);
     }
+
+    public Doctor addDoctor(Doctor doctor) { return doctorRepository.save(doctor); }
+
+
 
 }

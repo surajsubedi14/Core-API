@@ -33,7 +33,7 @@ public class Hospital {
     private String imgUrl;
 
     @Column(nullable = false)
-    private int rating;
+    private float rating;
 
     @Column( nullable = false)
     private String website;
