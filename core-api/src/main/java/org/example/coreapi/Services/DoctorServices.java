@@ -19,7 +19,7 @@ public class DoctorServices {
     @Autowired
     public DoctorRepository doctorRepository;
 
-    public Optional<Doctor> getDoctorDetails(int id){
+    public Optional<Doctor> getDoctorDetails(long id){
         return doctorRepository.findById(id);
     }
 
