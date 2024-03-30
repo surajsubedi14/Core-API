@@ -1,5 +1,6 @@
 package org.example.coreapi.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -20,14 +21,17 @@ public class Doctor extends User {
 
     private String seniorityLevel;
 
-    private int rating;
+    private float rating;
 
     private String specialization;
 
     private int yearOfExp;
 
+    private String role;
+
     @ManyToOne
     @JoinColumn(name ="hospital_id")
+    @JsonIgnore
     private Hospital hospital;
 
 }

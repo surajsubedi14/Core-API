@@ -18,7 +18,7 @@ public class Hospital {
 
     private String email;
 
-    private BigInteger phoneNumber;
+    private String phoneNumber;
 
     private String address;
 
@@ -31,6 +31,12 @@ public class Hospital {
     private String website;
 
     private String category;
+
+    private String password;
+
+    private String pincode;
+
+    private String role;
 
     @OneToMany(mappedBy = "hospital")
     private List<Doctor> doctors;

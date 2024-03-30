@@ -26,7 +26,7 @@ public class User {
     private String email;
 
     @Column(unique = true, nullable = false)
-    private BigInteger phoneNumber;
+    private String phoneNumber;
 
     @Column( nullable = false)
     private int age;
@@ -35,7 +35,7 @@ public class User {
     private String gender;
 
     @Column(unique = true, nullable = false)
-    private BigInteger aadhar;
+    private String aadhar;
 
     @Column(nullable = false)
     private String city;

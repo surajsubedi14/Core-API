@@ -1,7 +1,9 @@
 package org.example.coreapi.Repositories;
 
 import org.example.coreapi.Entities.Department;
+import org.example.coreapi.Entities.Doctor;
 import org.example.coreapi.Entities.Hospital;
+import org.example.coreapi.Entities.User;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
@@ -16,7 +18,10 @@ public interface HospitalRepository extends CrudRepository<Hospital,Integer> {
     Hospital findByEmail(String email);
 
     @Query("SELECT h FROM Hospital h WHERE h.hospital_id = ?1 ")
-    Hospital getHospitalById(Long id);
+    Hospital getHospitalById(long id);
+
+    @Query("select h.doctors from Hospital h where h.hospital_id=?1")
+    List<Doctor> getDoctorById(long id);
 
 
 

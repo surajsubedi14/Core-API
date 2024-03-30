@@ -10,4 +10,6 @@ public interface DoctorRepository extends CrudRepository<Doctor,Integer> {
 
     @Query("SELECT d from Doctor d where d.seniorityLevel = ?1")
     Iterable<Doctor> getDoctorsBySeniority(String name);
+
+
 }
