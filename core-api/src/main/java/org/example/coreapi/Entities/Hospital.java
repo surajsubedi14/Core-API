@@ -1,5 +1,6 @@
 package org.example.coreapi.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -12,33 +13,32 @@ import java.util.Set;
 public class Hospital {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long hospital_id;
-
+    private Long hospital_id;
     private String name;
-
     private String email;
-
-    private BigInteger phoneNumber;
-
+    private String phoneNumber;
     private String address;
-
     private String registrationNumber;
-
     private String imgUrl;
-
     private float rating;
-
     private String website;
+    private String password;
+    private String pincode;
+
+    private String role;
 
     private String category;
 
     @OneToMany(mappedBy = "hospital")
-    private List<Doctor> doctors;
+    private List<Doctor> doctor;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH })
-    @JoinTable(name = "Hospital_Department", joinColumns = @JoinColumn(name = "hospital_id"),
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "Hospital_Department",
+            joinColumns = @JoinColumn(name = "hospital_id"),
             inverseJoinColumns = @JoinColumn(name = "department_id"))
-    private Set<Department> departments;
-
+    @JsonIgnore
+    Set<Department> department;
 
 }
