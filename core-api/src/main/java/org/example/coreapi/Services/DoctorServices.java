@@ -26,7 +26,6 @@ public class DoctorServices {
     public List<Doctor> getDoctorsBySeniority(String isSenior){ return (List<Doctor>) doctorRepository.getDoctorsBySeniority(isSenior);
     }
 
-    public Doctor addDoctor(Doctor doctor) { return doctorRepository.save(doctor); }
 
 
 

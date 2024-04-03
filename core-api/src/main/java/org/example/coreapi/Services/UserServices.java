@@ -1,10 +1,12 @@
 package org.example.coreapi.Services;
 
 import org.example.coreapi.Entities.Doctor;
+import org.example.coreapi.Entities.Hospital;
 import org.example.coreapi.Entities.Patient;
 import org.example.coreapi.Entities.User;
 import org.example.coreapi.Repositories.DoctorRepository;
 import org.example.coreapi.Repositories.HospitalRepository;
+import org.example.coreapi.Repositories.PatientRepository;
 import org.example.coreapi.Repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -21,6 +23,8 @@ public class UserServices {
     public DoctorRepository doctorRepository;
     @Autowired
     public HospitalRepository  hospitalRepository;
+    @Autowired
+    public PatientRepository patientRepository;
 
     public User existUser(Doctor doctor)
     {
@@ -35,10 +39,14 @@ public class UserServices {
     {
         return (List<Doctor>) hospitalRepository.getDoctorById(id);
     }
-    public User addHospitalToUser(User user)
-    {
-        return userRepository.save(user);
+
+    public boolean updateUserDetails(Long id, Patient patient) {
+
+        patientRepository.updatePatientDetails(id,patient.getEmail(),patient.getPhoneNumber(),patient.getAge(),patient.getCity(),patient.getPassword(), patient.getHeight(), patient.getWeight());
+        return true;
     }
+
+
 
 
 }

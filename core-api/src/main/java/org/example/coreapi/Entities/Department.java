@@ -14,4 +14,8 @@ public class Department {
 
     private String department_name;
 
+    @ManyToMany(mappedBy = "department")
+    Set<Hospital> hospital;
+
+
 }

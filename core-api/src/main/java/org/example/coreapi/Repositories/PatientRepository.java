@@ -18,6 +18,6 @@ public interface PatientRepository extends JpaRepository<Patient,Long > {
     @Query("UPDATE Patient p SET p.email = :email, p.phoneNumber = :phone, p.age = :age, p.city = :address, p.password = :password, p.weight = :weight, p.height = :height WHERE p.user_id = :id")
     void updatePatientDetails( Long id,String email, String phone, int age, String address, String password, double weight, double height);
 
-    @Query("SELECT e FROM User e WHERE e.email = :email ")
+    @Query("SELECT p FROM Patient p WHERE p.email = :email ")
     Patient existsByUsername(String email);
 }

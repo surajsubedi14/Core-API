@@ -20,7 +20,7 @@ public interface HospitalRepository extends CrudRepository<Hospital,Integer> {
     @Query("SELECT h FROM Hospital h WHERE h.hospital_id = ?1 ")
     Hospital getHospitalById(long id);
 
-    @Query("select h.doctors from Hospital h where h.hospital_id=?1")
+    @Query("select h.doctor from Hospital h where h.hospital_id=?1")
     List<Doctor> getDoctorById(long id);
 
 
