@@ -1,8 +1,10 @@
 package org.example.coreapi.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -15,7 +17,8 @@ public class Department {
     private String department_name;
 
     @ManyToMany(mappedBy = "department")
-    Set<Hospital> hospital;
+    @JsonIgnore
+    List<Hospital> hospital;
 
 
 }

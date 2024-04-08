@@ -21,4 +21,12 @@ public class DepartmentServices {
     public DepartmentRepository departmentRepository;
 
 
+    public List<Department>findALLDepartment()
+    {
+        return (List<Department>) departmentRepository.findAll();
+    }
+
+
+
+
 }

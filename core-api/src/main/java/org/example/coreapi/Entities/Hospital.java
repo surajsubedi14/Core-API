@@ -38,7 +38,6 @@ public class Hospital {
             name = "Hospital_Department",
             joinColumns = @JoinColumn(name = "hospital_id"),
             inverseJoinColumns = @JoinColumn(name = "department_id"))
-    @JsonIgnore
-    Set<Department> department;
+    List<Department> department;
 
 }
