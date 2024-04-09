@@ -16,5 +16,6 @@ public interface DoctorRepository extends CrudRepository<Doctor,Integer> {
     @Query("select d from Doctor d where d.hospital=?1")
     List<Doctor> getDoctorDetails(long id);
 
-
+    @Query("select d from Doctor d where d.user_id=?1")
+    Doctor getDoctorById(Long id);
 }
