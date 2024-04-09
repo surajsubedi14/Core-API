@@ -24,4 +24,12 @@ public class DepartmentServices {
     public Department checkDepartment(String deptName) { return departmentRepository.isPresent(deptName); }
 
 
+    public List<Department>findALLDepartment()
+    {
+        return (List<Department>) departmentRepository.findAll();
+    }
+
+
+
+
 }

@@ -1,5 +1,6 @@
 package org.example.coreapi.Services;
 
+import org.example.coreapi.Entities.Department;
 import org.example.coreapi.Entities.Hospital;
 import org.example.coreapi.Repositories.HospitalRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,11 @@ public class HospitalServices {
     public Hospital existHospital (String email) { return hospitalRepository.findByEmail(email); }
 
     public Hospital addHospital(Hospital hospital) { return hospitalRepository.save(hospital); }
+
+    public List<Department>findALLDepartmentByHospitalId(long id)
+    {
+        return (List<Department>) hospitalRepository.getDepartmentByID(id);
+    }
 
 
 

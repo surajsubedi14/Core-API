@@ -45,6 +45,10 @@ public class UserServices {
         patientRepository.updatePatientDetails(id,patient.getEmail(),patient.getPhoneNumber(),patient.getAge(),patient.getCity(),patient.getPassword(), patient.getHeight(), patient.getWeight());
         return true;
     }
+    public  User getUser(Long id)
+    {
+        return userRepository.findByUserId(id);
+    }
 
 
 
