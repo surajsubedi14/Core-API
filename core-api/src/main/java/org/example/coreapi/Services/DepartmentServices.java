@@ -20,10 +20,6 @@ public class DepartmentServices {
 
     @Autowired
     public DepartmentRepository departmentRepository;
-
-    public Department checkDepartment(String deptName) { return departmentRepository.isPresent(deptName); }
-
-
     public List<Department>findALLDepartment()
     {
         return (List<Department>) departmentRepository.findAll();
