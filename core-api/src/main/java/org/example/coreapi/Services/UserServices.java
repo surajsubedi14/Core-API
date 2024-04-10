@@ -1,8 +1,10 @@
 package org.example.coreapi.Services;
 
 import org.example.coreapi.Entities.Doctor;
+import org.example.coreapi.Entities.Patient;
 import org.example.coreapi.Entities.User;
 import org.example.coreapi.Repositories.DoctorRepository;
+import org.example.coreapi.Repositories.PatientRepository;
 import org.example.coreapi.Repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,12 +17,10 @@ public class UserServices {
     public  UserRepository userRepository;
     @Autowired
     public DoctorRepository doctorRepository;
-    public User existUser(Doctor doctor)
-    {
-        return userRepository.findByEmails(doctor.getEmail());
-    }
-    public  User addDoctor(Doctor doctor)
-    {
-        return doctorRepository.save(doctor);
-    }
+    @Autowired
+    public PatientRepository patientRepository;
+    public User existUser(Doctor doctor) {return userRepository.findByEmails(doctor.getEmail());}
+    public  User addDoctor(Doctor doctor) {return doctorRepository.save(doctor);}
+    public User existPatient(Patient patient) {return userRepository.findByEmails(patient.getEmail());}
+    public  User addPatient(Patient patient) {return patientRepository.save(patient);}
 }
