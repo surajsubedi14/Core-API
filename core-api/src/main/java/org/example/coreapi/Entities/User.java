@@ -11,44 +11,33 @@ import java.math.BigInteger;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long user_id;
+    private Long user_id;
 
-    @Column(nullable = false)
     private String firstName;
 
-    @Column(nullable = false)
-    private String role;
-
-    @Column( nullable = false)
     private String lastName;
 
-    @Column(unique = true, nullable = false)
+    @Column(unique = true)
+    private String phoneNumber;
+
+    @Column(unique = true)
     private String email;
 
-    @Column(unique = true, nullable = false)
-    private BigInteger phoneNumber;
-
-    @Column( nullable = false)
     private int age;
 
-    @Column(nullable = false)
     private String gender;
 
-    @Column(unique = true, nullable = false)
-    private BigInteger aadhar;
+    private String aadhaar;
 
-    @Column(nullable = false)
-    private String city;
-
+    private String role;
 
     private String state;
 
+    private String city;
 
     private String password;
 
-
-    private String imgUrl;
-
+    private String img_url;
 
     private boolean active;
 }

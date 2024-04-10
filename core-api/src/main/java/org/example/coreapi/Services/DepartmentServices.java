@@ -1,6 +1,7 @@
 package org.example.coreapi.Services;
 
 import org.example.coreapi.Entities.Department;
+import org.example.coreapi.Entities.Doctor;
 import org.example.coreapi.Entities.Hospital;
 import org.example.coreapi.Repositories.DepartmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,13 @@ public class DepartmentServices {
 
     @Autowired
     public DepartmentRepository departmentRepository;
+
+    public List<Department>findALLDepartment()
+    {
+        return (List<Department>) departmentRepository.findAll();
+    }
+
+
 
 
 }

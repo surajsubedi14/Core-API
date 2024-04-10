@@ -19,12 +19,15 @@ public class DoctorServices {
     @Autowired
     public DoctorRepository doctorRepository;
 
-    public Optional<Doctor> getDoctorDetails(long id){
+    public Optional<Doctor> getDoctorDetails(int id){
         return doctorRepository.findById(id);
     }
 
-    public List<Doctor> getDoctorsBySeniority(String isSenior){ return (List<Doctor>) doctorRepository.getDoctorsBySeniority(isSenior);
-    }
+    public List<Doctor> getDoctorsBySeniority(String isSenior){ return (List<Doctor>) doctorRepository.getDoctorsBySeniority(isSenior);}
+
+    public Doctor getDoctorByUserId(Long id){return doctorRepository.getDoctorById(id);}
+
+
 
 
 }
