@@ -21,7 +21,7 @@ public class PatientService {
 
     public boolean updateUserDetails(Long id, Patient patient) {
 
-        patientRepository.updatePatientDetails(id, patient.getEmail(), patient.getPhoneNumber(), patient.getAge(), patient.getCity(), patient.getPassword(), patient.getHeight(), patient.getWeight());
+        patientRepository.updatePatientDetails(id, patient.getEmail(), patient.getPhoneNumber(), patient.getAge(), patient.getCity(), patient.getPassword(), patient.getHeight(), patient.getWeight(),patient.getBloodGroup(),patient.getDocument_url());
         return true;
     }
     public Patient existPatient (String email) { return patientRepository.existsByUsername(email); }

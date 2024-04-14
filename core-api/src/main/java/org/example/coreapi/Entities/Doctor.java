@@ -3,6 +3,7 @@ package org.example.coreapi.Entities;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.math.BigInteger;
 
@@ -10,6 +11,7 @@ import java.math.BigInteger;
 @Data
 @Table(name = "doctor")
 @PrimaryKeyJoinColumn(name = "user_id")
+@EqualsAndHashCode(callSuper=false)
 public class Doctor extends User {
 
     private String registrationNumber;
