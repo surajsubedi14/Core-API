@@ -40,6 +40,8 @@ public class EHR {
 
     private char patient_type;
 
+    private String prescription_url;
+
 
 
 }
