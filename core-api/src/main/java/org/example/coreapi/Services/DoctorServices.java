@@ -35,7 +35,7 @@ public class DoctorServices {
                 doctor.getDegree(),doctor.getSpecialization(),doctor.getYearOfExp());
         return true;
     }
-
+    public Doctor updatePasswordDoctor(Doctor doctor){return doctorRepository.save(doctor);}
 
 
 }
