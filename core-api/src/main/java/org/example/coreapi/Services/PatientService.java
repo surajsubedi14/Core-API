@@ -24,7 +24,7 @@ public class PatientService {
     }
     public Patient existPatient (String email) { return patientRepository.existsByUsername(email); }
 
-
+    public Patient updatePasswordPatient(Patient patient){return patientRepository.save(patient);}
 
 
 }

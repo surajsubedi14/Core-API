@@ -50,6 +50,12 @@ public class UserServices {
         return userRepository.findByUserId(id);
     }
 
+    public User getUserByMobileNumber(String mobileNumber){return userRepository.findByMobileNumber(mobileNumber);}
+    public User userExists(String number, String email) {
+        return userRepository.findByNumberAndEmail(number, email);
+    }
+
+    public User getUserByEmail(String email){return userRepository.findByEmails(email);}
 
 
 
