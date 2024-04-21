@@ -36,6 +36,8 @@ public class HospitalServices {
 
     public Hospital getHospitalByEmail(String email){return hospitalRepository.findByEmail(email);}
 
+    public  Hospital getHospital(Long id ){return  hospitalRepository.getHospitalById(id);}
+
 
 
 

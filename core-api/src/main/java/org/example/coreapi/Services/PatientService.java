@@ -7,6 +7,8 @@ import org.example.coreapi.Repositories.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class PatientService {
 
@@ -23,6 +25,9 @@ public class PatientService {
         return true;
     }
     public Patient existPatient (String email) { return patientRepository.existsByUsername(email); }
+
+    public Optional<Patient> getPatientDetails(long id){return patientRepository.findById(id);}
+
 
     public Patient updatePasswordPatient(Patient patient){return patientRepository.save(patient);}
 
