@@ -29,6 +29,7 @@ public class PatientService {
     public Optional<Patient> getPatientDetails(long id){return patientRepository.findById(id);}
 
 
+    public Patient updatePasswordPatient(Patient patient){return patientRepository.save(patient);}
 
 
 }
