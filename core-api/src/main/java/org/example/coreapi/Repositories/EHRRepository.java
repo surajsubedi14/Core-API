@@ -28,6 +28,9 @@ public interface EHRRepository extends CrudRepository<EHR,Integer> {
             "AND e.date > :date " +
             "GROUP BY e.date")
     List<Object[]> getLastTwentyDaysRepeated(long doctorId, LocalDate date);
+//    select date,reason from ehr,user where doctor_id = 10 and user_id = patient_id;
+    @Query("select u.firstName, u.lastName, u.gender,u.age,e.date, e.reason from EHR e , User u where e.doctor_id=:doctorId AND e.patient_id =u.user_id ")
+    List<Object>getEHRRecordsByDoctorId(long doctorId);
 
 
 }

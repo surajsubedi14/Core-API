@@ -44,6 +44,9 @@ public class EHRServices {
         LocalDate twentyDaysAgo = LocalDate.now().minusDays(20);
         return ehrRepository.getLastTwentyDaysRepeated(id, twentyDaysAgo);
     }
+    public List<Object>getEHRRecordsByDoctorId(@PathVariable long id){
+        return ehrRepository.getEHRRecordsByDoctorId(id);
+    }
 
 
 }
