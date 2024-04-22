@@ -10,4 +10,6 @@ public class AdminService {
     @Autowired
     public DoctorRepository doctorRepository;
     public Doctor addDoctor(Doctor doctor) { return doctorRepository.save(doctor); }
+
+
 }
