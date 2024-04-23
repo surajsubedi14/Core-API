@@ -1,13 +1,10 @@
 package org.example.coreapi.Services;
-
-import org.example.coreapi.Entities.EHR;
 import org.example.coreapi.Repositories.EHRRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
+
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+
 
 import java.time.LocalDate;
 import java.util.List;
@@ -44,8 +41,11 @@ public class EHRServices {
         LocalDate twentyDaysAgo = LocalDate.now().minusDays(20);
         return ehrRepository.getLastTwentyDaysRepeated(id, twentyDaysAgo);
     }
-    public List<Object>getEHRRecordsByDoctorId(@PathVariable long id){
+    public List<Object[]>getEHRRecordsByDoctorId(@PathVariable long id){
         return ehrRepository.getEHRRecordsByDoctorId(id);
+    }
+    public List<Object[]>getEHRecordsByPatientId(@PathVariable long id){
+        return ehrRepository.getEHRecordsByPatientId(id);
     }
 
 

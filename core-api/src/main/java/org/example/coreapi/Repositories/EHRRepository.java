@@ -1,4 +1,5 @@
 package org.example.coreapi.Repositories;
+
 import org.example.coreapi.Entities.EHR;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -28,9 +29,16 @@ public interface EHRRepository extends CrudRepository<EHR,Integer> {
             "AND e.date > :date " +
             "GROUP BY e.date")
     List<Object[]> getLastTwentyDaysRepeated(long doctorId, LocalDate date);
-//    select date,reason from ehr,user where doctor_id = 10 and user_id = patient_id;
-    @Query("select u.firstName, u.lastName, u.gender,u.age,e.date, e.reason from EHR e , User u where e.doctor_id=:doctorId AND e.patient_id =u.user_id ")
-    List<Object>getEHRRecordsByDoctorId(long doctorId);
+    @Query("select u.firstName, u.lastName, u.gender,u.age,e.date, e.reason,e.prescription_url,e.follow_up_date,e.patient_type,p.bloodGroup,p.height,p.weight from EHR e , User u, Patient p where e.doctor_id=:doctorId AND e.patient_id =u.user_id AND e.patient_id=p.user_id")
+    List<Object[]>getEHRRecordsByDoctorId(long doctorId);
+
+@Query("SELECT e.date, e.reason,e.follow_up_date,e.prescription_url, h.name, u.firstName, u.lastName " +
+        "FROM EHR e " +
+        "JOIN User u ON e.doctor_id = u.user_id " +
+        "JOIN Doctor d ON u.user_id = d.user_id " +
+        "JOIN Hospital h ON d.hospital.hospital_id = h.hospital_id " +
+        "WHERE e.patient_id =:patientId")
+    List<Object[]>getEHRecordsByPatientId(long patientId);
 
 
 }
