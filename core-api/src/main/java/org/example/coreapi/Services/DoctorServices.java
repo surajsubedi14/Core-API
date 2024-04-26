@@ -25,7 +25,7 @@ public class DoctorServices {
         return doctorRepository.findById(id);
     }
 
-    public List<Doctor> getDoctorsBySeniority(String isSenior){ return (List<Doctor>) doctorRepository.getDoctorsBySeniority(isSenior);}
+//    public List<Doctor> getDoctorsBySeniority(String isSenior){ return (List<Doctor>) doctorRepository.getDoctorsBySeniority(isSenior);}
 
     public Doctor getDoctorByUserId(Long id){return doctorRepository.getDoctorById(id);}
 
