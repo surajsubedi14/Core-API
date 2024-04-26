@@ -47,6 +47,10 @@ public class EHRServices {
     public List<Object[]>getEHRecordsByPatientId(@PathVariable long id){
         return ehrRepository.getEHRecordsByPatientId(id);
     }
+    public  List<Object[]> getEhrRecordsForMonitoringPage(@PathVariable long seniorDoctorId)
+    {
+        return ehrRepository.getEhrRecordsForMonitoringPage(seniorDoctorId);
+    }
 
 
 }

@@ -32,7 +32,7 @@ public interface EHRRepository extends CrudRepository<EHR,Integer> {
     @Query("select u.firstName, u.lastName, u.gender,u.age,e.date, e.reason,e.prescription_url,e.follow_up_date,e.patient_type,p.bloodGroup,p.height,p.weight from EHR e , User u, Patient p where e.doctor_id=:doctorId AND e.patient_id =u.user_id AND e.patient_id=p.user_id")
     List<Object[]>getEHRRecordsByDoctorId(long doctorId);
 
-@Query("SELECT e.date, e.reason,e.follow_up_date,e.prescription_url, h.name, u.firstName, u.lastName " +
+    @Query("SELECT e.date, e.reason,e.follow_up_date,e.prescription_url, h.name, u.firstName, u.lastName " +
         "FROM EHR e " +
         "JOIN User u ON e.doctor_id = u.user_id " +
         "JOIN Doctor d ON u.user_id = d.user_id " +
@@ -40,5 +40,13 @@ public interface EHRRepository extends CrudRepository<EHR,Integer> {
         "WHERE e.patient_id =:patientId")
     List<Object[]>getEHRecordsByPatientId(long patientId);
 
+    @Query("SELECT u.firstName, u.lastName, u.gender, u.age, e.patient_type, e.reason, d.specialization, uu.firstName, uu.lastName " +
+            "FROM EHR e " +
+            "JOIN User u ON e.patient_id = u.user_id " +
+            "JOIN User uu ON e.doctor_id = uu.user_id " +
+            "JOIN Doctor d ON uu.user_id = d.user_id " +
+            "WHERE e.date = CURDATE() AND d.hospital.hospital_id = (SELECT hospital.hospital_id FROM Doctor WHERE user_id = :seniorDoctorId)")
+    List<Object[]>getEhrRecordsForMonitoringPage(long seniorDoctorId);
 
 }
+
