@@ -1,10 +1,13 @@
 package org.example.coreapi.Repositories;
 
+import jakarta.transaction.Transactional;
 import org.example.coreapi.Entities.EHR;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+import java.time.Duration;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
@@ -47,6 +50,13 @@ public interface EHRRepository extends CrudRepository<EHR,Integer> {
             "JOIN Doctor d ON uu.user_id = d.user_id " +
             "WHERE e.date = CURDATE() AND d.hospital.hospital_id = (SELECT hospital.hospital_id FROM Doctor WHERE user_id = :seniorDoctorId)")
     List<Object[]>getEhrRecordsForMonitoringPage(long seniorDoctorId);
+    @Query("Select e from EHR e where e.patient_id =:patient_id and e.doctor_id =:doctor_id")
+    Optional<EHR> getRepeatedPatient(long patient_id, long doctor_id);
+
+    @Modifying
+    @Transactional
+    @Query("UPDATE EHR e SET e.duration =:duration WHERE e.ehr_id =:id")
+    void updateRecordDetails( Long id, Duration duration);
 
 }
 
