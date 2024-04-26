@@ -17,7 +17,7 @@ public class Doctor extends User {
     private String registrationNumber;
     private String degree;
     private String availability;
-    private String seniorityLevel;
+    private String SeniorityLevel;
     private int rating;
 
     private String specialization;
