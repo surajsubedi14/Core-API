@@ -55,11 +55,8 @@ public interface EHRRepository extends CrudRepository<EHR,Integer> {
     @Transactional
     @Query("UPDATE EHR e SET e.duration =:duration WHERE e.ehr_id =:id")
     void updateRecordDetails( Long id, Duration duration);
-
     @Query("SELECT MAX(e.date) FROM EHR e WHERE e.patient_id =:patient_id and e.doctor_id =:doctor_id")
     Date getLastAppointmentDate(Long patient_id,Long doctor_id);
-
-
 
 }
 
