@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import java.math.BigInteger;
+import java.util.List;
 
 @Entity
 @Data
@@ -28,5 +29,9 @@ public class Doctor extends User {
     @JoinColumn(name = "hospital_id")
     @JsonIgnore
     private Hospital hospital;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "feedback_id")
+    private Feedback feedback;
 
 }

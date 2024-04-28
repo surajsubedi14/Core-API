@@ -1,7 +1,5 @@
 package org.example.coreapi.Repositories;
-
 import jakarta.transaction.Transactional;
-import lombok.Data;
 import org.example.coreapi.Entities.EHR;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -32,7 +30,10 @@ public interface EHRRepository extends CrudRepository<EHR,Integer> {
             "AND e.date > :date " +
             "GROUP BY e.date")
     List<Object[]> getLastTwentyDaysRepeated(long doctorId, LocalDate date);
-    @Query("select u.firstName, u.lastName, u.gender,u.age,e.date, e.reason,e.prescription_url,e.follow_up_date,e.patient_type,p.bloodGroup,p.height,p.weight from EHR e , User u, Patient p where e.doctor_id=:doctorId AND e.patient_id =u.user_id AND e.patient_id=p.user_id")
+    @Query("select u.firstName, u.lastName, u.gender,u.age,e.date, e.reason,e.prescription_url,e.follow_up_date,e.patient_type," +
+            "p.bloodGroup,p.height,p.weight from EHR e , User u, Patient p " +
+            "where e.doctor_id=:doctorId AND e.patient_id =u.user_id " +
+            "AND e.patient_id=p.user_id")
     List<Object[]>getEHRRecordsByDoctorId(long doctorId);
     @Query("SELECT e.date, e.reason,e.follow_up_date,e.prescription_url, h.name, u.firstName, u.lastName " +
         "FROM EHR e " +
@@ -55,7 +56,7 @@ public interface EHRRepository extends CrudRepository<EHR,Integer> {
     @Query("UPDATE EHR e SET e.duration =:duration WHERE e.ehr_id =:id")
     void updateRecordDetails( Long id, Duration duration);
     @Query("SELECT MAX(e.date) FROM EHR e WHERE e.patient_id =:patient_id and e.doctor_id =:doctor_id")
-    Date getLastAppointmentDate(Long patient_id,Long doctor_id);
+    LocalDate getLastAppointmentDate(Long patient_id,Long doctor_id);
 
 }
 
