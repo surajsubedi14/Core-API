@@ -1,6 +1,7 @@
 package org.example.coreapi.Services;
 import org.example.coreapi.Entities.Doctor;
 import org.example.coreapi.Entities.EHR;
+import org.example.coreapi.Entities.Feedback;
 import org.example.coreapi.Repositories.EHRRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -70,7 +71,7 @@ public class EHRServices {
         ehrRepository.updateRecordDetails(ehr.getEhr_id(), ehr.getDuration());
         return true;
     }
-    public Date getLastAppointmentDate(long patient_id,long doctor_id){
+    public LocalDate getLastAppointmentDate(long patient_id,long doctor_id){
          return ehrRepository.getLastAppointmentDate(patient_id,doctor_id);
     }
 
