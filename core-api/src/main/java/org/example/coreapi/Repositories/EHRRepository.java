@@ -57,6 +57,13 @@ public interface EHRRepository extends CrudRepository<EHR,Integer> {
     @Query("SELECT MAX(e.date) FROM EHR e WHERE e.patient_id =:patient_id and e.doctor_id =:doctor_id")
     Date getLastAppointmentDate(Long patient_id,Long doctor_id);
 
+    @Modifying
+    @Transactional
+    @Query("UPDATE EHR e SET e.reason =:reason, e.follow_up_date =:follow_up_date, e.prescription_url =:prescription_url WHERE e.ehr_id =:id")
+    void updatePrescriptionDetails(Long id, String reason, LocalDate follow_up_date, String prescription_url);
+
+    @Query("SELECT e.prescription_url from EHR e where e.ehr_id =:id")
+    String getPrescriptionById(long id);
     @Query("SELECT COUNT(e) FROM EHR e")
     Long totalConsulation();
 
