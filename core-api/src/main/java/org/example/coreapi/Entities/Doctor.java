@@ -19,7 +19,9 @@ public class Doctor extends User {
     private boolean availability;
     private String seniorityLevel;
     private int rating;
+
     private String specialization;
+
     private int yearOfExp;
 
     @ManyToOne
