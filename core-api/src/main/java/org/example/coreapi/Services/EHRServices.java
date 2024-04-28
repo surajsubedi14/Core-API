@@ -51,7 +51,7 @@ public class EHRServices {
         return ehrRepository.getEHRecordsByPatientId(id);
     }
 
-    public Optional<EHR> getRepeatedPatient(@PathVariable long patient_id , @PathVariable long doctor_id){
+    public Optional<List<EHR>> getRepeatedPatient(@PathVariable long patient_id , @PathVariable long doctor_id){
         return ehrRepository.getRepeatedPatient(patient_id, doctor_id);
     }
 

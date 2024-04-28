@@ -44,7 +44,7 @@ public interface EHRRepository extends CrudRepository<EHR,Integer> {
     List<Object[]>getEHRecordsByPatientId(long patientId);
 
     @Query("Select e from EHR e where e.patient_id =:patient_id and e.doctor_id =:doctor_id")
-    Optional<EHR> getRepeatedPatient(long patient_id, long doctor_id);
+    Optional<List<EHR>> getRepeatedPatient(long patient_id, long doctor_id);
 
     @Modifying
     @Transactional
