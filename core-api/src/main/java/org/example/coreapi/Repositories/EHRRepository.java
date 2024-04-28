@@ -40,7 +40,7 @@ public interface EHRRepository extends CrudRepository<EHR,Integer> {
         "JOIN Hospital h ON d.hospital.hospital_id = h.hospital_id " +
         "WHERE e.patient_id =:patientId")
     List<Object[]>getEHRecordsByPatientId(long patientId);
-    @Query("SELECT u.firstName, u.lastName, u.gender, u.age, e.patient_type, e.reason, d.specialization, uu.firstName, uu.lastName " +
+    @Query("SELECT u.firstName, u.lastName, u.gender, u.age, e.patient_type, e.reason, d.specialization, uu.firstName, uu.lastName, u.user_id, uu.user_id " +
             "FROM EHR e " +
             "JOIN User u ON e.patient_id = u.user_id " +
             "JOIN User uu ON e.doctor_id = uu.user_id " +
