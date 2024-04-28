@@ -50,6 +50,10 @@ public class EHRServices {
     public List<Object[]>getEHRecordsByPatientId(@PathVariable long id){
         return ehrRepository.getEHRecordsByPatientId(id);
     }
+    public  List<Object[]> getEhrRecordsForMonitoringPage(@PathVariable long seniorDoctorId)
+    {
+        return ehrRepository.getEhrRecordsForMonitoringPage(seniorDoctorId);
+    }
 
     public Optional<List<EHR>> getRepeatedPatient(@PathVariable long patient_id , @PathVariable long doctor_id){
         return ehrRepository.getRepeatedPatient(patient_id, doctor_id);

@@ -42,7 +42,13 @@ public interface EHRRepository extends CrudRepository<EHR,Integer> {
         "JOIN Hospital h ON d.hospital.hospital_id = h.hospital_id " +
         "WHERE e.patient_id =:patientId")
     List<Object[]>getEHRecordsByPatientId(long patientId);
-
+    @Query("SELECT u.firstName, u.lastName, u.gender, u.age, e.patient_type, e.reason, d.specialization, uu.firstName, uu.lastName, u.user_id, uu.user_id " +
+            "FROM EHR e " +
+            "JOIN User u ON e.patient_id = u.user_id " +
+            "JOIN User uu ON e.doctor_id = uu.user_id " +
+            "JOIN Doctor d ON uu.user_id = d.user_id " +
+            "WHERE e.date = CURDATE() AND d.hospital.hospital_id = (SELECT hospital.hospital_id FROM Doctor WHERE user_id = :seniorDoctorId)")
+    List<Object[]>getEhrRecordsForMonitoringPage(long seniorDoctorId);
     @Query("Select e from EHR e where e.patient_id =:patient_id and e.doctor_id =:doctor_id")
     Optional<List<EHR>> getRepeatedPatient(long patient_id, long doctor_id);
 
@@ -52,3 +58,4 @@ public interface EHRRepository extends CrudRepository<EHR,Integer> {
     void updateRecordDetails( Long id, Duration duration);
 
 }
+
