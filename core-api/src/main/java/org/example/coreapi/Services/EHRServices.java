@@ -82,4 +82,6 @@ public class EHRServices {
     public String getPrescription(long id){
         return ehrRepository.getPrescriptionById(id);
     }
+
+    public Long totalConsulation(){return ehrRepository.totalConsulation();}
 }

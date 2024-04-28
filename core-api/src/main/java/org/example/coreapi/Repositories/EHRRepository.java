@@ -64,5 +64,8 @@ public interface EHRRepository extends CrudRepository<EHR,Integer> {
 
     @Query("SELECT e.prescription_url from EHR e where e.ehr_id =:id")
     String getPrescriptionById(long id);
+    @Query("SELECT COUNT(e) FROM EHR e")
+    Long totalConsulation();
+
 }
 
