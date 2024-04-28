@@ -73,4 +73,13 @@ public class EHRServices {
     public Date getLastAppointmentDate(long patient_id,long doctor_id){
          return ehrRepository.getLastAppointmentDate(patient_id,doctor_id);
     }
+
+    public boolean updatePrescriptionDetails(EHR ehr) {
+        ehrRepository.updatePrescriptionDetails(ehr.getEhr_id(), ehr.getReason(), ehr.getFollow_up_date(), ehr.getPrescription_url());
+        return true;
+    }
+
+    public String getPrescription(long id){
+        return ehrRepository.getPrescriptionById(id);
+    }
 }
