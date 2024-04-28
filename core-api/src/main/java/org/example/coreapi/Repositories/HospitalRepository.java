@@ -27,12 +27,6 @@ public interface HospitalRepository extends CrudRepository<Hospital,Integer> {
     List<Department> getDepartmentByID(long id);
 
 
-
-
-
-
-
-
-
-
+    @Query("select COUNT(h) from Hospital h ")
+    Long numberOfHospitals();
 }

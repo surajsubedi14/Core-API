@@ -28,4 +28,12 @@ public interface DoctorRepository extends CrudRepository<Doctor,Integer> {
             "p.yearOfExp =:experience WHERE p.user_id = :id")
     void updateDoctorDetails( Long id,String email, String phone, int age, String state, String degree,
                               String specialization, int experience);
+
+    @Query("SELECT COUNT(d) FROM Doctor d ")
+    Long numberOfDoctors();
+    @Query("SELECT COUNT(d) FROM Doctor d WHERE d.availability = true")
+    Long numberOfActiveDoctor();
+
+    @Query("SELECT d FROM Doctor d ORDER BY d.rating DESC LIMIT 5")
+    List<Doctor> getTopFiveDoctor();
 }
