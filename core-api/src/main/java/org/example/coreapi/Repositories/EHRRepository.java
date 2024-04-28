@@ -1,6 +1,7 @@
 package org.example.coreapi.Repositories;
 
 import jakarta.transaction.Transactional;
+import lombok.Data;
 import org.example.coreapi.Entities.EHR;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import java.time.Duration;
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -53,6 +55,11 @@ public interface EHRRepository extends CrudRepository<EHR,Integer> {
     @Transactional
     @Query("UPDATE EHR e SET e.duration =:duration WHERE e.ehr_id =:id")
     void updateRecordDetails( Long id, Duration duration);
+
+    @Query("SELECT MAX(e.date) FROM EHR e WHERE e.patient_id =:patient_id and e.doctor_id =:doctor_id")
+    Date getLastAppointmentDate(Long patient_id,Long doctor_id);
+
+
 
 }
 
