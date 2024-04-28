@@ -73,4 +73,6 @@ public class EHRServices {
     public Date getLastAppointmentDate(long patient_id,long doctor_id){
          return ehrRepository.getLastAppointmentDate(patient_id,doctor_id);
     }
+
+    public Long totalConsulation(){return ehrRepository.totalConsulation();}
 }

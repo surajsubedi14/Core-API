@@ -38,6 +38,8 @@ public class HospitalServices {
 
     public  Hospital getHospital(Long id ){return  hospitalRepository.getHospitalById(id);}
 
+    public Long numberOfHospital(){return hospitalRepository.numberOfHospitals();}
+
 
 
 

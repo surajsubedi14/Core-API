@@ -57,5 +57,8 @@ public interface EHRRepository extends CrudRepository<EHR,Integer> {
     @Query("SELECT MAX(e.date) FROM EHR e WHERE e.patient_id =:patient_id and e.doctor_id =:doctor_id")
     Date getLastAppointmentDate(Long patient_id,Long doctor_id);
 
+    @Query("SELECT COUNT(e) FROM EHR e")
+    Long totalConsulation();
+
 }
 

@@ -37,5 +37,11 @@ public class DoctorServices {
     }
     public Doctor updatePasswordDoctor(Doctor doctor){return doctorRepository.save(doctor);}
 
+    public Long numberOfDoctor(){return doctorRepository.numberOfDoctors();}
+
+    public Long numberOfActiveDoctor(){return doctorRepository.numberOfActiveDoctor();}
+
+    public List<Doctor>topFiveDoctors(){return doctorRepository.getTopFiveDoctor();}
+
 
 }
