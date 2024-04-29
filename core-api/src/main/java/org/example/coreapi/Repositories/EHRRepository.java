@@ -30,10 +30,11 @@ public interface EHRRepository extends CrudRepository<EHR,Integer> {
             "AND e.date > :date " +
             "GROUP BY e.date")
     List<Object[]> getLastTwentyDaysRepeated(long doctorId, LocalDate date);
-    @Query("select u.firstName, u.lastName, u.gender,u.age,e.date, e.reason,e.prescription_url,e.follow_up_date,e.patient_type," +
-            "p.bloodGroup,p.height,p.weight from EHR e , User u, Patient p " +
-            "where e.doctor_id=:doctorId AND e.patient_id =u.user_id " +
-            "AND e.patient_id=p.user_id")
+
+    @Query("select u.firstName, u.lastName, u.gender, u.age, e.date, e.reason, e.prescription_url, e.follow_up_date, e.patient_type, " +
+            "p.bloodGroup, p.height, p.weight " +
+            "from EHR e join User u on e.patient_id = u.user_id " +
+            "JOIN Patient p on u.user_id  = p.user_id where e.doctor_id = :doctorId ORDER BY e.date DESC")
     List<Object[]>getEHRRecordsByDoctorId(long doctorId);
     @Query("SELECT e.date, e.reason,e.follow_up_date,e.prescription_url, h.name, u.firstName, u.lastName " +
         "FROM EHR e " +
@@ -42,7 +43,7 @@ public interface EHRRepository extends CrudRepository<EHR,Integer> {
         "JOIN Hospital h ON d.hospital.hospital_id = h.hospital_id " +
         "WHERE e.patient_id =:patientId")
     List<Object[]>getEHRecordsByPatientId(long patientId);
-    @Query("SELECT u.firstName, u.lastName, u.gender, u.age, e.patient_type, e.reason, d.specialization, uu.firstName, uu.lastName, u.user_id, uu.user_id " +
+    @Query("SELECT u.firstName, u.lastName, u.gender, u.age, e.patient_type, e.reason, d.specialization, uu.firstName, uu.lastName, u.user_id, uu.user_id,e.duration " +
             "FROM EHR e " +
             "JOIN User u ON e.patient_id = u.user_id " +
             "JOIN User uu ON e.doctor_id = uu.user_id " +
@@ -67,6 +68,7 @@ public interface EHRRepository extends CrudRepository<EHR,Integer> {
     String getPrescriptionById(long id);
     @Query("SELECT COUNT(e) FROM EHR e")
     Long totalConsulation();
+
 
 }
 

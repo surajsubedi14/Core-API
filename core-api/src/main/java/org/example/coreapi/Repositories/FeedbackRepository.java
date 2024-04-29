@@ -23,4 +23,6 @@ public interface FeedbackRepository extends CrudRepository<Feedback,Integer> {
 
     @Query("SELECT f FROM Feedback f JOIN Doctor d ON f.feedback_id = d.feedback.feedback_id WHERE d.user_id = :id")
     Feedback getFeedbacksByDoctorID(long id);
+
+
 }
